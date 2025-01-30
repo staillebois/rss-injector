@@ -1,0 +1,27 @@
+{
+  "namespace": "com.st",
+  "type": "record",
+  "name": "Rss",
+  "fields": [
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "link",
+      "type": "string"
+    },
+    {
+      "name": "pubDate",
+      "type": "string"
+    },
+    {
+      "name": "category",
+      "type": "string"
+    }
+  ]
+}
