@@ -21,13 +21,16 @@ public class RssKafkaRoute extends RouteBuilder {
     @ConfigProperty(name = "rss.feeds")
     String rssFeeds;
 
+    @ConfigProperty(name = "rss.delay")
+    String rssDelay;
+
     @ConfigProperty(name = "xml.jq.filter")
     String xmlJqFilter;
 
     @Override
     public void configure() {
         Arrays.asList(rssFeeds.split(","))
-        .forEach(rss -> from("rss:" + rss + "?splitEntries=true&consumer.delay=60000")
+        .forEach(rss -> from("rss:" + rss + "?splitEntries=true&consumer.delay=" + rssDelay)
                         .marshal().rss()
                         .to("xj:identity?transformDirection=XML2JSON")
                         .transform().jq(xmlJqFilter)
